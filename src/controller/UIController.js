@@ -6,11 +6,11 @@ export class UIController {
   constructor() {}
 
   init() {
-    this.render();
+    this.#renderComponent();
   }
-  // render
+  // #renderComponent
 
-  render() {
+  #renderComponent() {
     // container
     const container = document.querySelector(".container");
 
@@ -21,6 +21,15 @@ export class UIController {
 
     // header
     const header = new Header();
+
+    // city description
+    const city = document.createElement("span");
+    city.textContent = `Results for: `;
+    city.classList.add("heading-secondary");
+    const cityName = document.createElement("strong");
+    cityName.textContent = `Tokyo`;
+    city.appendChild(cityName);
+
     // current
     const current = new CurrentWeather();
     // forecast
@@ -29,6 +38,7 @@ export class UIController {
     // append
     container.appendChild(title);
     container.appendChild(header);
+    container.appendChild(city);
     container.appendChild(current);
     container.appendChild(forecast);
   }

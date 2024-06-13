@@ -4,7 +4,6 @@ import rainThunderPng from "../assets/RainThunder.png";
 export class ForecastWeather {
   constructor() {
     const forecast = this.#renderComponent();
-    console.log(forecast);
     return forecast;
   }
 
