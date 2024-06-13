@@ -1,3 +1,4 @@
+import { UIController } from "./UIController";
 import { WeatherController } from "./WeatherController";
 
 export class AppController {
@@ -5,6 +6,7 @@ export class AppController {
 
   constructor() {
     this.wc = new WeatherController();
+    this.uc = new UIController();
   }
 
   init() {}
