@@ -1,5 +1,10 @@
 import styles from "./styles.css";
-import { AppController } from "./controller/AppController";
 
-const app = new AppController();
-app.init();
+import { UIController } from "./controller/UIController";
+import { Header } from "./component/Header";
+
+document.addEventListener("DOMContentLoaded", () => {
+  const app = new UIController();
+
+  app.init();
+});
