@@ -11,17 +11,39 @@ html {
   color: #333;
 }
 
-.container {
+body {
+  display: grid;
   min-height: 100vh;
-  width: 100vw;
-  padding: 96px;
+  place-items: center;
+}
+
+.container {
+  height: 100vh;
+  max-height: 648px;
+  /* width: 100vw; */
+  max-width: 720px;
+  padding: 96px 128px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 4fr 3fr;
+  align-items: center;
+}
+
+.heading-primary {
+  grid-column: span 2;
+  text-align: center;
 }
 
 /* INPUTS */
 
+.input-container {
+  grid-column: span 2;
+}
+
 .form {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  /* justify-content: center; */
+  grid-template-columns: 7fr min-content;
   gap: 8px;
 }
 
@@ -34,7 +56,7 @@ html {
 .search__input {
   padding: 4px;
   font: inherit;
-  width: 50%;
+  width: 100%;
 }
 
 .search__btn {
@@ -42,4 +64,67 @@ html {
   align-items: center;
   padding: 4px;
   background-color: transparent;
+}
+
+/* CURRENT */
+.current-container {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.current__details {
+  display: flex;
+  gap: 8px;
+}
+
+.current__temp {
+  display: flex;
+  gap: 4px;
+}
+
+.temp {
+  font-size: 48px;
+}
+.celcius,
+.sep,
+.fahrenheit {
+  padding-top: 4px;
+}
+
+.celcius,
+.fahrenheit {
+  cursor: pointer;
+}
+
+.current__img {
+  padding-top: 4px;
+  & svg {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.weather__details {
+  display: flex;
+  flex-direction: column;
+  padding-top: 4px;
+  font-size: 12px;
+  text-wrap: nowrap;
+}
+
+.current__summary {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.current__summary--heading {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.weather__details,
+.inactive {
+  color: #acacac;
 }
