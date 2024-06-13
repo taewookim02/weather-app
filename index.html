@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello world</title>
+  <title>Weather App</title>
 <script defer src="app.bundle.js"></script></head>
 
 <body>
@@ -17,7 +17,39 @@
     </div>
 
     <div class="current-container">
+      <div class="current__details">
+        <span class="current__img">icon here</span>
+        <span class="current__temp">28 <span class="celcius">°C</span>|<span class="fahrenheit">°F</span></span>
+        <div class="weather__details">
+          <span class="current__precipitation">Precipitation: 0%</span>
+          <span class="current__humidity">Humidity: 51%</span>
+          <span class="current__wind">Wind: 1 m/s</span>
+        </div>
+      </div>
+      <div class="current__summary">
+        <span>Weather</span>
+        <span class="current__day">Thursday (06/14)</span>
+        <span class="current__status">Sunny</span>
+      </div>
+    </div>
 
+    <div class="forecast-container">
+      <div class="forecast__day-one">
+        <span class="forecast__day">Fri</span>
+        <span class="forecast__img">img here</span>
+        <div class="forecast__temp">
+          <span class="forecast__temp--highest">34°</span>
+          <span class="forecast__temp--lowest">18°</span>
+        </div>
+      </div>
+      <div class="forecast__day-two">
+        <span class="forecast__day">Sat</span>
+        <span class="forecast__img">img here</span>
+        <div class="forecast__temp">
+          <span class="forecast__temp--highest">27°</span>
+          <span class="forecast__temp--lowest">18°</span>
+        </div>
+      </div>
     </div>
 </body>
 
