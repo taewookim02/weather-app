@@ -189,11 +189,11 @@ body {
 }
 
 .spinner {
-  border: 16px solid #f3f3f3;
-  border-top: 16px solid #64d2ff;
+  border: 8px solid #e8eaed;
+  border-top: 8px solid #ffd400;
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
+  width: 96px;
+  height: 96px;
   animation: spin 1s linear infinite;
 }
 
