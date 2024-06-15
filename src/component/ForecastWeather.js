@@ -77,5 +77,8 @@ export class ForecastWeather {
     return forecast;
   }
 
-  #attachListeners = () => {};
+  update(data) {
+    console.log("hello");
+    console.log(data);
+  }
 }

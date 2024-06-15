@@ -4,10 +4,9 @@ import { Header } from "../component/Header";
 import { WeatherController } from "./WeatherController";
 
 export class UIController {
-  wc;
-
   constructor() {
     this.wc = new WeatherController();
+    this.unit = "C";
   }
 
   init() {
@@ -32,21 +31,32 @@ export class UIController {
     const city = document.createElement("span");
     city.textContent = `Results for: `;
     city.classList.add("heading-secondary");
-    const cityName = document.createElement("strong");
-    cityName.textContent = `Tokyo`;
-    city.appendChild(cityName);
+    this.cityName = document.createElement("strong");
+    this.cityName.textContent = `Tokyo`;
+    city.appendChild(this.cityName);
 
     // current
-    const current = new CurrentWeather();
+    this.current = new CurrentWeather();
     // forecast
-    const forecast = new ForecastWeather();
+    this.forecast = new ForecastWeather();
 
     // append
     container.appendChild(title);
     container.appendChild(header);
     container.appendChild(city);
-    container.appendChild(current);
-    container.appendChild(forecast);
+    container.appendChild(this.current.element);
+    container.appendChild(this.forecast);
+
+    this.current.element
+      .querySelector(".celcius")
+      .addEventListener("click", () => {
+        this.#handleUnitChange("C");
+      });
+    this.current.element
+      .querySelector(".fahrenheit")
+      .addEventListener("click", () => {
+        this.#handleUnitChange("F");
+      });
   }
 
   async #handleCitySearch(e) {
@@ -55,10 +65,27 @@ export class UIController {
     console.log(city);
     console.log(this.wc);
     try {
-      const data = await this.wc.getForecastWeather(city);
-      console.log(data);
+      this.data = await this.wc.getForecastWeather(city);
+      console.log(this.data);
+      this.#updateUI(this.data);
     } catch (err) {
       console.log(err);
     }
+  }
+
+  #handleUnitChange(unit) {
+    console.log(this.data);
+    if (this.unit !== unit) {
+      this.unit = unit;
+      this.#updateUI(this.data);
+    }
+  }
+
+  #updateUI(data) {
+    // update city name
+    this.cityName.textContent = data.location.name;
+
+    // call updates in current, forecast
+    this.current.update(data, this.unit);
   }
 }

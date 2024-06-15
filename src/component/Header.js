@@ -47,7 +47,6 @@ export class Header {
     const input = header.querySelector(".search__input");
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      // TODO: fetch
       const city = input.value;
 
       header.dispatchEvent(new CustomEvent("citySearch", { detail: { city } }));
