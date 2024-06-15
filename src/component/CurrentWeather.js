@@ -120,16 +120,34 @@ export class CurrentWeather {
     precipitation.textContent = `Precipitation: ${currentData.day.daily_chance_of_rain}%`;
     humidity.textContent = `Humidity: ${currentData.day.avghumidity}%`;
     wind.textContent = `Wind: ${currentData.day.maxwind_kph} m/s`;
-    img.setAttribute("src", Sunny);
 
     // update summary
     const day = this.element.querySelector(".current__day");
     const status = this.element.querySelector(".current__status");
     const img = this.element.querySelector(".current__img--tag");
-    console.log(currentData);
-    // need to update the img src too here
 
     day.textContent = this.formatDate(currentData.date);
     status.textContent = currentData.day.condition.text;
+    const condition = currentData.day.condition.text;
+    img.setAttribute("src", this.#getImageSrc(condition)); // update img based on condition text
+  };
+
+  #getImageSrc = (condition) => {
+    if (condition.includes("rain")) {
+      return Rainy;
+    }
+    if (condition.includes("partly") && condition.includes("cloud")) {
+      return partlyCloudy;
+    }
+    if (condition.includes("cloud")) {
+      return cloudyPng;
+    }
+    if (condition.includes("snow")) {
+      return Snowy;
+    }
+    if (condition.includes("thunder")) {
+      return RainThunder;
+    }
+    return Sunny;
   };
 }
