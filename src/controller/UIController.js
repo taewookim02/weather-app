@@ -94,7 +94,7 @@ export class UIController {
 
   #updateUI(data) {
     // update city name
-    this.cityName.textContent = data.location.name;
+    this.cityName.textContent = `${data.location.name}, ${data.location.country}`;
 
     // call updates in current, forecast
     this.current.update(data, this.unit);
