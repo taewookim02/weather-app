@@ -86,7 +86,7 @@ export class CurrentWeather {
   };
 
   // Utility function to format date
-  formatDate(dateStr) {
+  #formatDate(dateStr) {
     const date = new Date(dateStr);
     const options = { weekday: "long" };
     const weekday = date.toLocaleDateString("en-US", options);
@@ -126,7 +126,7 @@ export class CurrentWeather {
     const status = this.element.querySelector(".current__status");
     const img = this.element.querySelector(".current__img--tag");
 
-    day.textContent = this.formatDate(currentData.date);
+    day.textContent = this.#formatDate(currentData.date);
     status.textContent = currentData.day.condition.text;
     const condition = currentData.day.condition.text;
     img.setAttribute("src", this.#getImageSrc(condition)); // update img based on condition text

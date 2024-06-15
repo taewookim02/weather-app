@@ -45,7 +45,7 @@ export class UIController {
     container.appendChild(header);
     container.appendChild(city);
     container.appendChild(this.current.element);
-    container.appendChild(this.forecast);
+    container.appendChild(this.forecast.element);
 
     this.current.element
       .querySelector(".celcius")
@@ -74,7 +74,6 @@ export class UIController {
   }
 
   #handleUnitChange(unit) {
-    console.log(this.data);
     if (this.unit !== unit) {
       this.unit = unit;
       this.#updateUI(this.data);
@@ -87,5 +86,6 @@ export class UIController {
 
     // call updates in current, forecast
     this.current.update(data, this.unit);
+    this.forecast.update(data, this.unit);
   }
 }
