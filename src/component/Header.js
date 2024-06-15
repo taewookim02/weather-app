@@ -1,5 +1,9 @@
+import { WeatherController } from "../controller/WeatherController";
+
 export class Header {
+  wc;
   constructor() {
+    this.wc = new WeatherController();
     const header = this.#renderComponent();
     this.#attachListeners(header);
     return header;
@@ -44,8 +48,9 @@ export class Header {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       // TODO: fetch
+      const city = input.value;
 
-      console.log(input.value);
+      header.dispatchEvent(new CustomEvent("citySearch", { detail: { city } }));
     });
   }
 }

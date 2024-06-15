@@ -5,8 +5,8 @@ export class WeatherController {
 
   async getCurrentWeather(city) {
     try {
-      const url = `${FetchWeather.URL}/current.json?key=${
-        FetchWeather.#API_KEY
+      const url = `${WeatherController.URL}/current.json?key=${
+        WeatherController.#API_KEY
       }&q=${city}`;
 
       const res = await fetch(url, { mode: "cors" });
@@ -25,8 +25,8 @@ export class WeatherController {
   async getForecastWeather(city) {
     try {
       // forecast for 3 days ahead
-      const url = `${FetchWeather.URL}/forecast.json?key=${
-        FetchWeather.#API_KEY
+      const url = `${WeatherController.URL}/forecast.json?key=${
+        WeatherController.#API_KEY
       }&q=${city}&days=3`;
 
       // response
