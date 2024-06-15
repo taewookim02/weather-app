@@ -40,6 +40,7 @@ export class WeatherController {
       return forecast;
     } catch (error) {
       console.log(error);
+      alert(error);
     }
   }
 }

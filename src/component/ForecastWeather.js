@@ -86,7 +86,6 @@ export class ForecastWeather {
   }
 
   update(data, unit) {
-    console.log(data);
     const dayOne = data.forecast.forecastday[1];
 
     // get day Sun from "2024-06-16"
@@ -101,7 +100,6 @@ export class ForecastWeather {
     // get img
     const condition = dayOne.day.condition.text;
     const imgSrc = this.#getImageSrc(condition);
-    console.log(imgSrc);
 
     // update this.element
     const forecastDay = this.element.querySelector(".forecast__day");
@@ -115,7 +113,9 @@ export class ForecastWeather {
     lowestTempTag.textContent = `${lowestTemp}°`;
     forecastImgTag.setAttribute("src", imgSrc);
 
+    // Day two
     const dayTwo = data.forecast.forecastday[2];
+    // get data
     const abbDay2 = this.#getAbbreviatedDay(dayTwo.date);
     const highestTemp2 =
       unit === "C" ? dayTwo.day.maxtemp_c : dayTwo.day.maxtemp_f;
@@ -124,6 +124,7 @@ export class ForecastWeather {
     const condition2 = dayTwo.day.condition.text;
     const imgSrc2 = this.#getImageSrc(condition2);
 
+    // update element
     const forecastDay2 = this.element.querySelector(".forecast__day-2");
     const highestTempTag2 = this.element.querySelector(
       ".forecast__temp--highest-2"

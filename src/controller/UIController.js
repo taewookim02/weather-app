@@ -3,6 +3,10 @@ import { ForecastWeather } from "../component/ForecastWeather";
 import { Header } from "../component/Header";
 import { WeatherController } from "./WeatherController";
 
+const initialCity = {
+  detail: { city: "Tokyo" },
+};
+
 export class UIController {
   constructor() {
     this.wc = new WeatherController();
@@ -11,6 +15,8 @@ export class UIController {
 
   init() {
     this.#renderComponent();
+    // initial citysearch
+    this.#handleCitySearch(initialCity);
   }
   // #renderComponent
 
@@ -60,13 +66,9 @@ export class UIController {
   }
 
   async #handleCitySearch(e) {
-    console.log(e);
     const city = e.detail.city;
-    console.log(city);
-    console.log(this.wc);
     try {
       this.data = await this.wc.getForecastWeather(city);
-      console.log(this.data);
       this.#updateUI(this.data);
     } catch (err) {
       console.log(err);
