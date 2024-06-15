@@ -1,6 +1,6 @@
 # weather-app
 
-![preview](./src/assets/preview.png)
+![preview](./src/assets/preview2.png)
 
 This is a simple weather application that allows users to input their location and fetch the current weather information for that location. The application displays the weather data on the webpage and includes a loading spinner that appears while fetching the data.
 
