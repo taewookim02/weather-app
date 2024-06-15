@@ -67,6 +67,7 @@ body {
   display: flex;
   align-items: center;
   padding: 4px;
+  cursor: pointer;
 }
 
 /* CURRENT */
