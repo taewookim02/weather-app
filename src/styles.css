@@ -221,4 +221,7 @@ body {
     align-items: center;
     padding: 16px 0;
   }
+  .container {
+    border: none;
+  }
 }
