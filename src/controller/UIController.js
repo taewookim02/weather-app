@@ -1,6 +1,7 @@
 import { CurrentWeather } from "../component/CurrentWeather";
 import { ForecastWeather } from "../component/ForecastWeather";
 import { Header } from "../component/Header";
+import { LoadingSpinner } from "../component/LoadingSpinner";
 import { WeatherController } from "./WeatherController";
 
 const initialCity = {
@@ -11,6 +12,7 @@ export class UIController {
   constructor() {
     this.wc = new WeatherController();
     this.unit = "C";
+    this.spinner = new LoadingSpinner();
   }
 
   init() {
@@ -52,6 +54,7 @@ export class UIController {
     container.appendChild(city);
     container.appendChild(this.current.element);
     container.appendChild(this.forecast.element);
+    container.appendChild(this.spinner.element);
 
     this.current.element
       .querySelector(".celcius")
@@ -65,14 +68,21 @@ export class UIController {
       });
   }
 
-  async #handleCitySearch(e) {
-    const city = e.detail.city;
+  async #fetchAndRenderWeather(city) {
+    this.spinner.show();
     try {
       this.data = await this.wc.getForecastWeather(city);
       this.#updateUI(this.data);
     } catch (err) {
       console.log(err);
+    } finally {
+      this.spinner.hide();
     }
+  }
+
+  async #handleCitySearch(e) {
+    const city = e.detail.city;
+    await this.#fetchAndRenderWeather(city);
   }
 
   #handleUnitChange(unit) {
